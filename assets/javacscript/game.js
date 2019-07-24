@@ -14,23 +14,46 @@ var winNum = Math.floor(Math.random()*120) + 19;
 
 window.onload = function gameStart() {
     playerScore = 0;
+
     $("#gameNum").text(winNum);
 
-    $("#gem1").on("click", addNum1);
-    $("#gem2").on("click", addNum2);
-    $("#gem3").on("click", addNum3);
-    $("#gem4").on("click", addNum4);
-    
-    winCon();
+    $("#gem1").on("click", function(){
+        addNum1();
+        winCon();
+        console.log(playerScore);
+    });
+    $("#gem2").on("click", function(){
+        addNum2();
+        winCon();
+        console.log(playerScore);
+    });
+    $("#gem3").on("click", function(){
+        addNum3();
+        winCon();
+        console.log(playerScore);
+    });
+    $("#gem4").on("click", function(){
+        addNum4();
+        winCon();
+        console.log(playerScore);
+    });
+
 }
 
 
-function winCon () {
+function winCon () {                        //when click is called, go ("click", function(){
+                                            // win con and add num functions get called here
+                                            // so addnum1();
+                                            //then if/else statements
+
     if (playerScore === winNum) {
-        $("winScreen").text("You Win!");
+        $("#winScreen").html("You Win!");                                    
+        winReset();
+
     }
     else if (playerScore > winNum) {
-        $("winScreen").text("You Lose!");
+        $("#winScreen").text("You Lose!");
+        winReset();
     }
     else {
         $("winScreen").text("Keep Going!");
@@ -38,7 +61,20 @@ function winCon () {
     
 }
 
-console.log(winNum);
+function winReset () {
+    
+    gem1Ran = Math.floor(Math.random()*12) +1;
+    gem2Ran = Math.floor(Math.random()*12) +1;
+    gem3Ran = Math.floor(Math.random()*12) +1;
+    gem4Ran = Math.floor(Math.random()*12) +1;
+
+    winNum = Math.floor(Math.random()*120) + 19;
+    $("#gameNum").text(winNum);
+    playerScore = 0;
+    $("#totalPoints").text(playerScore);
+
+
+}
 
 
 
@@ -67,8 +103,5 @@ function addNum4() {
     $("#totalPoints").text(playerScore);
    
 }
-
-
-
 
 
