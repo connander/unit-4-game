@@ -12,20 +12,43 @@ var playerScore = 0;
 
 var winNum = Math.floor(Math.random()*120) + 1;
 
-console.log(winNum);
-$("#gameNum").text(winNum);
+window.onload = function gameStart() {
+    playerScore = 0;
+    $("#gameNum").text(winNum);
 
-$("#gem1").on("click", addNum1);
-$("#gem2").on("click", addNum2);
-$("#gem3").on("click", addNum3);
-$("#gem4").on("click", addNum4);
+    $("#gem1").on("click", addNum1);
+    $("#gem2").on("click", addNum2);
+    $("#gem3").on("click", addNum3);
+    $("#gem4").on("click", addNum4);
+    
+    winCon();
+}
+
+
+function winCon () {
+    if (playerScore === winNum) {
+        $("winScreen").text("You Win!");
+    }
+    else if (playerScore > winNum) {
+        $("winScreen").text("You Lose!");
+    }
+    else {
+        $("winScreen").text("Keep Going!");
+    }
+    
+}
+
+console.log(winNum);
+
+
 
 function addNum1() {
  
  playerScore = gem1Ran + playerScore;
  $("#totalPoints").text(playerScore);
-
+ winCon();
 }
+
 function addNum2() {
  
     playerScore = gem2Ran + playerScore;
@@ -47,13 +70,5 @@ function addNum4() {
 
 
 
-console.log(playerScore);
-    if (playerScore === winNum) {
-        $("winScreen").text("You Win!");
-    }
-    else if (playerScore > winNum) {
-        $("winScreen").text("You Lose!");
-    }
-    else {
-        $("winScreen").text("Keep Going!");
-    }
+
+
