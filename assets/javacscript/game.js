@@ -10,7 +10,7 @@ console.log("gem4 points" + gem4Ran);
 
 var playerScore = 0;
 
-var winNum = Math.floor(Math.random()*120) + 1;
+var winNum = Math.floor(Math.random()*120) + 19;
 
 window.onload = function gameStart() {
     playerScore = 0;
